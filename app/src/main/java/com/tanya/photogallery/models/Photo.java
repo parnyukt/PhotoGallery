@@ -6,5 +6,6 @@ public class Photo {
     public String name;
     public String description;
     public String camera;
+    public String imageUrl;
     public User user;
 }
