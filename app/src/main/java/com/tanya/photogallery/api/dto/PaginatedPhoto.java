@@ -6,5 +6,5 @@ import com.tanya.photogallery.models.Photo;
 public class PaginatedPhoto {
 
     public Photo[] photos;
-    public PaginationInfo pages;
+//    public PaginationInfo pages;
 }

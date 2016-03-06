@@ -5,4 +5,6 @@ public class Photo {
     public long userId;
     public String name;
     public String description;
+    public String camera;
+    public User user;
 }
