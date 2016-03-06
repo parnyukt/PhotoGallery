@@ -19,10 +19,10 @@ public class PhotoViewModel implements Serializable {
 
     public static PhotoViewModel from(Photo photo) {
         PhotoViewModel viewModel = new PhotoViewModel();
-        viewModel.name = photo.name;
-        viewModel.description = photo.description;
-        viewModel.camera = photo.camera;
-        viewModel.userName = photo.user.fullname;
+        viewModel.name = "Name: " + photo.name;
+        viewModel.description = "Description: " + photo.description;
+        viewModel.camera = "Camera:" + photo.camera;
+        viewModel.userName = "Author: " + photo.user.fullname;
         viewModel.imageUrl = photo.imageUrl;
         return viewModel;
     }
