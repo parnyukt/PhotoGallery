@@ -17,11 +17,11 @@ public class PhotoGalleryApi {
     public Call<PaginatedPhoto> getPopularPhotos(int page) {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-// set your desired log level
+        // set your desired log level
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient httpClient = new OkHttpClient();
-// add your other interceptors …
-// add logging as last interceptor
+        // add your other interceptors …
+        // add logging as last interceptor
         httpClient.interceptors().add(logging);  // <-- this is the important line!
 
         Retrofit retrofit = new Retrofit.Builder()

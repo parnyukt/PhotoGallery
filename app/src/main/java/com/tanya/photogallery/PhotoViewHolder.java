@@ -7,23 +7,27 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.tanya.photogallery.databinding.ViewPhotoBinding;
+import com.tanya.photogallery.models.Photo;
+import com.tanya.photogallery.viewmodels.PhotoViewModel;
 
-public class PhotoViewHolder extends RecyclerView.ViewHolder
-        implements View.OnClickListener {
+import java.util.List;
+
+public class PhotoViewHolder extends RecyclerView.ViewHolder {
 
     private final ViewPhotoBinding mBinding;
     private PhotoViewModel mPhotoViewModel;
+    private List<Photo> mPhotos;
 
-    private PhotoViewHolder(View itemView) {
+    private PhotoViewHolder(View itemView, List<Photo> photos) {
         super(itemView);
-        itemView.setOnClickListener(this);
         mBinding = DataBindingUtil.bind(itemView);
+        mPhotos = photos;
     }
 
-    public static PhotoViewHolder inflate(ViewGroup parent) {
+    public static PhotoViewHolder inflate(ViewGroup parent, List<Photo> photos) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.view_photo, parent, false);
-        return new PhotoViewHolder(view);
+        return new PhotoViewHolder(view, photos);
     }
 
     public void bind(PhotoViewModel mediaElementViewModel) {
@@ -32,22 +36,13 @@ public class PhotoViewHolder extends RecyclerView.ViewHolder
         onBind(mediaElementViewModel);
     }
 
-    @Override
-    public void onClick(View v) {
-
-        if (mPhotoViewModel != null) {
-            mPhotoViewModel.openViewer(v.getContext());
-        }
-    }
-
     protected void onBind(PhotoViewModel photoViewModel) {
         mBinding.setVm(photoViewModel);
-
-//        mBinding.mediumIcon.setImageResource(photoViewModel.mediumTypeIconId);
-//
-//        mBinding.ratingBar.setRating(photoViewModel.ratingPercentage);
-//        mBinding.ratingBar.showStaticProgress(false);
+        itemView.setOnClickListener(v -> viewSlide(v, getAdapterPosition()));
     }
 
+    private void viewSlide(View view, int position) {
+        PhotoGalleryActivity.start(view, mPhotos, position);
+    }
 
 }

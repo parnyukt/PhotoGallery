@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.tanya.photogallery.models.Photo;
+import com.tanya.photogallery.viewmodels.PhotoViewModel;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoViewHolder> {
     @Override
     public PhotoViewHolder onCreateViewHolder(ViewGroup parent,
                                               int viewType) {
-        return PhotoViewHolder.inflate(parent);
+        return PhotoViewHolder.inflate(parent, records);
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.tanya.photogallery.models;
 
-public class Photo {
+import java.io.Serializable;
+
+public class Photo implements Serializable {
     public long id;
     public long userId;
     public String name;
